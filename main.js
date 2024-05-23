@@ -1,7 +1,21 @@
+import Player from "./src/Player.js"
+import { Game, GameLoop } from "./framework/Game.js"
+
 const canvas = document.getElementById('game-canvas');
-const ctx = canvas.getContext('2d');
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
-ctx.fillStyle = 'skyblue';
-ctx.fillRect(0, 0, 50, 50);
+const game = new Game(canvas);
+const player = new Player(0, 0, 50, 50);
+
+function update(game, timestamp) {
+  game.ctx.clearRect(0, 0, game.width, game.height);
+  player.update(game, timestamp);
+}
+
+function render(game) {
+  player.render(game);
+}
+
+const gameLoop = new GameLoop(game, update, render);
+gameLoop.start();
