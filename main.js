@@ -9,11 +9,11 @@ const game = new Game(canvas);
 const player = new Player(0, 0, 50, 50);
 
 function update(game, timestamp) {
-  game.ctx.clearRect(0, 0, game.width, game.height);
   player.update(game, timestamp);
 }
 
 function render(game) {
+  game.ctx.clearRect(0, 0, game.width, game.height);
   player.render(game);
 }
 
