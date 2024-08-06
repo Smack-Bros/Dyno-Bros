@@ -4,17 +4,14 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-canvas.style.background = 'skyblue';
+canvas.style.background = 'lightyellow';
 
-ctx.fillStyle = 'pink';
-ctx.fillRect(0, 0, 100, 100);
+ctx.fillStyle = '#67e6d2';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-ctx.fillStyle = 'violet';
-ctx.fillRect(100, 100, 100, 100);
+const image = new Image();
+image.src = './img/DinoMap.png'
 
-ctx.beginPath();
-ctx.strokeStyle = 'yellow';
-ctx.lineWidth = 10;
-ctx.arc(100, 100, 50, 0, Math.PI * 2, false);
-ctx.stroke();
-ctx.closePath();
+image.onload = () => {
+    ctx.drawImage(image, 375, 10);
+}
